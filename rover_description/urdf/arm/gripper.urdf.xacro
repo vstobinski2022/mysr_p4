@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+<robot name="rover" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="gripper" params="parent_link">
+    
+    <joint name="08_grip_link_joint" type="revolute">
+      <limit lower="-1.57000" upper="1.57000" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.01000 -1.50000"/>
+      <parent link="${parent_link}"/>
+      <child link="grip_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <joint name="09_grip_d_link_joint" type="prismatic">
+      <limit lower="-0.11000" upper="0.00000" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="0.00000 1.57080 0.00000" xyz="0.40000 0.00000 -0.30000"/>
+      <parent link="grip_link"/>
+      <child link="grip_d_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <joint name="09_grip_i_link_joint" type="prismatic">
+      <limit lower="-0.11000" upper="0.00000" effort="25.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 -1.57080 0.00000" xyz="-0.40000 0.00000 -0.30000"/>
+      <parent link="grip_link"/>
+      <child link="grip_i_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <link name="grip_d_link">
+      <collision name="grip_d_collision">
+        <origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.00000 -0.00000"/>
+        <geometry>
+          <box size="0.50000 0.40000 0.10000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.01708" ixy="0.00000" ixz="-0.00000" iyy="0.01083" iyz="0.00000" izz="0.00708"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+        <mass value="0.50000"/>
+      </inertial>
+      <visual name="grip_d">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+        <material name="Material.001"/>
+        <geometry>
+          <box size="0.50000 0.40000 0.10000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="grip_i_link">
+      <collision name="grip_i_collision">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="-0.00000 -0.00000 0.00000"/>
+        <geometry>
+          <box size="0.50000 0.40000 0.10000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.01708" ixy="0.00000" ixz="0.00000" iyy="0.01083" iyz="0.00000" izz="0.00708"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+        <mass value="0.50000"/>
+      </inertial>
+      <visual name="grip_i">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="-0.00000 -0.00000 -0.00000"/>
+        <material name="Material.001"/>
+        <geometry>
+          <box size="0.50000 0.40000 0.10000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="grip_link">
+      <collision name="grip_collision">
+        <origin rpy="0.00000 -0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <box size="0.90000 0.40000 0.10000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00708" ixy="0.00000" ixz="-0.00000" iyy="0.03417" iyz="0.00000" izz="0.04042"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+        <mass value="0.50000"/>
+      </inertial>
+      <visual name="grip">
+        <origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+        <material name="Material.001"/>
+        <geometry>
+          <box size="0.90000 0.40000 0.10000"/>
+        </geometry>
+      </visual>
+    </link>
+
+  </xacro:macro>
+</robot>

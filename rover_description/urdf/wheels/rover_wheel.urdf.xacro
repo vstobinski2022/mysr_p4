@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+<robot name="rover" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="rover_wheel" params="parent_link">
+
+    <!-- Ruedas -->
+    <!-- ROBOT NAME? -->
+    <joint name="Rueda_D1_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="3.14159 0.00000 3.14159" xyz="-0.00000 0.00000 -0.05000"/>
+      <parent link="Cilindro_D1_link"/>
+      <child link="Rueda_D1_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <joint name="Rueda_D2_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="3.14159 0.00000 -3.14159" xyz="-0.00000 -0.00000 -0.05000"/>
+      <parent link="Cilindro_D2_link"/>
+      <child link="Rueda_D2_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <joint name="Rueda_D3_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="3.14159 0.00000 3.14159" xyz="0.00000 -0.00000 -0.05000"/>
+      <parent link="Cilindro_D3_link"/>
+      <child link="Rueda_D3_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <joint name="Rueda_I1_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="3.14159 -0.00000 -3.14159" xyz="0.00000 -0.00000 -0.05000"/>
+      <parent link="Cilindro_i1_link"/>
+      <child link="Rueda_I1_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <joint name="Rueda_I2_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="3.14159 -0.00000 3.14159" xyz="-0.00000 -0.00000 -0.05000"/>
+      <parent link="Cilindro_i2_link"/>
+      <child link="Rueda_I2_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <joint name="Rueda_i3_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="25.00000" velocity="5.00000"/>
+      <origin rpy="3.14159 -0.00000 -3.14159" xyz="0.00000 -0.00000 -0.05000"/>
+      <parent link="Cilindro_i3_link"/>
+      <child link="Rueda_i3_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <!-- llantas -->
+
+    <joint name="Cilindro_D1_link_joint" type="fixed">
+      <origin rpy="1.57080 0.78540 -1.57080" xyz="0.25000 0.03536 -0.60104"/>
+      <parent link="Cubo_d1_link"/>
+      <child link="Cilindro_D1_link"/>
+    </joint>
+    <joint name="Cilindro_D2_link_joint" type="fixed">
+      <origin rpy="1.57080 0.00000 -1.57080" xyz="0.25000 0.00000 -0.55000"/>
+      <parent link="Cubo_d2_link"/>
+      <child link="Cilindro_D2_link"/>
+    </joint>
+    <joint name="Cilindro_D3_link_joint" type="fixed">
+      <origin rpy="1.57080 -0.78540 -1.57080" xyz="0.25000 -0.03536 -0.60104"/>
+      <parent link="Cubo_d3_link"/>
+      <child link="Cilindro_D3_link"/>
+    </joint>
+    <joint name="Cilindro_i1_link_joint" type="fixed">
+      <origin rpy="1.57080 -0.78540 1.57080" xyz="-0.25000 0.03536 -0.60104"/>
+      <parent link="Cubo_i1_link"/>
+      <child link="Cilindro_i1_link"/>
+    </joint>
+    <joint name="Cilindro_i2_link_joint" type="fixed">
+      <origin rpy="1.57080 -0.00000 1.57080" xyz="-0.25000 0.00000 -0.55000"/>
+      <parent link="Cubo_i3_link"/>
+      <child link="Cilindro_i2_link"/>
+    </joint>
+    <joint name="Cilindro_i3_link_joint" type="fixed">
+      <origin rpy="1.57080 0.78540 1.57080" xyz="-0.25000 -0.03536 -0.60104"/>
+      <parent link="Cubo_i2_link"/>
+      <child link="Cilindro_i3_link"/>
+    </joint>
+
+    <!-- CONEXIONES -->
+
+    <joint name="Cubo_d1_link_joint" type="fixed">
+      <origin rpy="-0.78540 0.00000 0.00000" xyz="0.50000 -0.80000 -0.80000"/>
+      <parent link="${parent_link}"/>
+      <child link="Cubo_d1_link"/>
+    </joint>
+    <joint name="Cubo_d2_link_joint" type="fixed">
+      <origin rpy="0.78540 0.00000 0.00000" xyz="0.50000 0.80000 -0.80000"/>
+      <parent link="${parent_link}"/>
+      <child link="Cubo_d3_link"/>
+    </joint>
+    <joint name="Cubo_d3_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.50000 0.00000 -0.70000"/>
+      <parent link="${parent_link}"/>
+      <child link="Cubo_d2_link"/>
+    </joint>
+    <joint name="Cubo_i1_link_joint" type="fixed">
+      <origin rpy="-0.78540 0.00000 0.00000" xyz="-0.50000 -0.80000 -0.80000"/>
+      <parent link="${parent_link}"/>
+      <child link="Cubo_i1_link"/>
+    </joint>
+    <joint name="Cubo_i2_link_joint" type="fixed">
+      <origin rpy="0.78540 0.00000 0.00000" xyz="-0.50000 0.80000 -0.80000"/>
+      <parent link="${parent_link}"/>
+      <child link="Cubo_i2_link"/>
+    </joint>
+    <joint name="Cubo_i3_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.50000 0.00000 -0.70000"/>
+      <parent link="${parent_link}"/>
+      <child link="Cubo_i3_link"/>
+    </joint>
+
+    <!-- link RUEDAS -->
+
+    <link name="Rueda_D1_link">
+      <collision name="Rueda_D1_collision">
+        <origin rpy="0.00000 0.00000 -0.00000" xyz="-0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </collision>
+      <visual name="Rueda_D1">
+        <origin rpy="0.00000 -0.00000 -0.00000" xyz="-0.00000 0.00000 0.00000"/>
+        <material name="Material.007"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Rueda_D2_link">
+      <collision name="Rueda_D2_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.005.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </collision>
+      <visual name="Rueda_D2">
+        <origin rpy="-0.00000 -0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+        <material name="Material.007"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.005.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Rueda_D3_link">
+      <collision name="Rueda_D3_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.001.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </collision>
+      <visual name="Rueda_D3">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="Material.007"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.001.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Rueda_I1_link">
+      <collision name="Rueda_I1_collision">
+        <origin rpy="3.14159 0.00000 -3.14159" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.004.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </collision>
+      <visual name="Rueda_I1">
+        <origin rpy="3.14159 0.00000 -3.14159" xyz="0.00000 0.00000 0.00000"/>
+        <material name="Material.007"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.004.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Rueda_I2_link">
+      <collision name="Rueda_I2_collision">
+        <origin rpy="3.14159 0.00000 -3.14159" xyz="-0.00000 -0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.003.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </collision>
+      <visual name="Rueda_I2">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="0.00000 0.00000 0.00000"/>
+        <material name="Material.007"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.003.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Rueda_i3_link">
+      <collision name="Rueda_i3_collision">
+        <origin rpy="3.14159 -0.00000 3.14159" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.002.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </collision>
+      <visual name="Rueda_i3">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="0.00000 0.00000 -0.00000"/>
+        <material name="Material.007"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Rosca.002.dae" scale="0.40000 0.40000 1.00000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- link LLANTAS -->
+
+    <link name="Cilindro_D1_link">
+      <collision name="Cilindro_D1_collision">
+        <origin rpy="3.14159 -0.00000 -3.14159" xyz="0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.006.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="-0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cilindro_D1">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="-0.00000 -0.00000 0.00000"/>
+        <material name="Material.008"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.006.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Cilindro_D2_link">
+      <collision name="Cilindro_D2_collision">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="0.00000 -0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.005.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cilindro_D2">
+        <origin rpy="3.14159 0.00000 -3.14159" xyz="0.00000 -0.00000 -0.00000"/>
+        <material name="Material.008"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.005.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Cilindro_D3_link">
+      <collision name="Cilindro_D3_collision">
+        <origin rpy="3.14159 -0.00000 -3.14159" xyz="-0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.001.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="-0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cilindro_D3">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="0.00000 -0.00000 -0.00000"/>
+        <material name="Material.008"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.001.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Cilindro_i1_link">
+      <collision name="Cilindro_i1_collision">
+        <origin rpy="0.00000 -0.00000 -0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.004.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="-0.00000" ixz="-0.00000" iyy="0.00100" iyz="-0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cilindro_i1">
+        <origin rpy="0.00000 0.00000 -0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+        <material name="Material.008"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.004.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Cilindro_i2_link">
+      <collision name="Cilindro_i2_collision">
+        <origin rpy="-0.00000 -0.00000 -0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.002.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="-0.00000" ixz="-0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cilindro_i2">
+        <origin rpy="0.00000 0.00000 -0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="Material.008"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.002.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Cilindro_i3_link">
+      <collision name="Cilindro_i3_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.003.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="-0.00000" ixz="-0.00000" iyy="0.00100" iyz="-0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cilindro_i3">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="Material.008"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cilindro.003.dae" scale="0.25000 0.25000 0.27500"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- link CONEXIONES -->
+
+    <link name="Cubo_d1_link">
+      <collision name="Dubo_d1_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 0.10000 1.30000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Dubo_d1">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.005.dae" scale="0.05000 0.05000 0.65000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="Cubo_d2_link">
+      <collision name="Cubo_d3_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 0.10000 1.10000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cubo_d3">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.004.dae" scale="0.05000 0.05000 0.55000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="Cubo_d3_link">
+      <collision name="Cubo_d2_collision">
+        <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 0.10000 1.30000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+        <mass value="2.00000"/>
+      </inertial>
+      <visual name="Cubo_d2">
+        <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.003.dae" scale="0.05000 0.05000 0.65000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="Cubo_i1_link">
+      <collision name="Cubo_i1_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 0.10000 1.30000"/>
+        </geometry>
+      </collision>
+      <visual name="Cubo_i1">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.dae" scale="0.05000 0.05000 0.65000"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="Cubo_i2_link">
+      <collision name="Cubo_i2_collision">
+        <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.001.dae" scale="0.05000 0.05000 0.65000"/>
+        </geometry>
+      </collision>
+      <visual name="Cubo_i2">
+        <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.001.dae" scale="0.05000 0.05000 0.65000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="Cubo_i3_link">
+      <collision name="Cubo_i3_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.002.dae" scale="0.05000 0.05000 0.55000"/>
+        </geometry>
+      </collision>
+      <visual name="Cubo_i3">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find rover_description)/meshes/dae/Cubo.002.dae" scale="0.05000 0.05000 0.55000"/>
+        </geometry>
+      </visual>
+    </link>
+
+  </xacro:macro>
+</robot>
