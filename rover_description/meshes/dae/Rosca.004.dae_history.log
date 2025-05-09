@@ -1,3 +1,0 @@
-Instantiated with filepath=None->None, scale=[0.3999999165534973, 0.3999999165534973, 0.9999998807907104], mesh=<bpy_struct, Mesh("Rosca.004") at 0x78c51af68808>, meshname=Rosca.004, material=None, mesh_orientation=None, {}
-->trying export of <bpy_struct, Mesh("Rosca.004") at 0x78c51af68808> to /home/alumnos/valerias/tmp/p3/unnamed/meshes/dae/Rosca.004.dae
-->wrote dae to /home/alumnos/valerias/tmp/p3/unnamed/meshes/dae/Rosca.004.dae from bpy_types.Mesh

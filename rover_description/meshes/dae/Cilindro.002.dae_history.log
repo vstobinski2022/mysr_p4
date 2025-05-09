@@ -1,3 +1,0 @@
-Instantiated with filepath=None->None, scale=[0.24999995529651642, 0.24999995529651642, 0.2749999463558197], mesh=<bpy_struct, Mesh("Cilindro.002") at 0x78c520c1b008>, meshname=Cilindro.002, material=None, mesh_orientation=None, {}
-->trying export of <bpy_struct, Mesh("Cilindro.002") at 0x78c520c1b008> to /home/alumnos/valerias/tmp/p3/unnamed/meshes/dae/Cilindro.002.dae
-->wrote dae to /home/alumnos/valerias/tmp/p3/unnamed/meshes/dae/Cilindro.002.dae from bpy_types.Mesh

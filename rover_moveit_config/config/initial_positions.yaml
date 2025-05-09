@@ -1,9 +1,0 @@
-# Default initial positions for rover's ros2_control fake system
-
-initial_positions:
-  02_Cilindro_link_joint: 0
-  04_Cilindro_verti_3_link_joint: 0
-  07_Cilindro_verti_5_link_joint: 0
-  08_grip_link_joint: 0
-  09_grip_d_link_joint: 0
-  09_grip_i_link_joint: 0
